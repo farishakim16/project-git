@@ -1,0 +1,157 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-12-18T10:58:36.959Z",
+    "end": "2025-12-18T10:58:38.048Z",
+    "duration": 1089,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c274c542-087d-4988-a8e9-d9b4a18f2882",
+      "title": "",
+      "fullFile": "C:\\Users\\faris\\Documents\\Bootcamp\\Api Automation\\tests\\login.test.js",
+      "file": "\\tests\\login.test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "990e2c33-beac-4b7a-818e-f07a74ac4298",
+          "title": "API Automation Test",
+          "fullFile": "C:\\Users\\faris\\Documents\\Bootcamp\\Api Automation\\tests\\login.test.js",
+          "file": "\\tests\\login.test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"API Automation Test\"",
+              "fullTitle": "API Automation Test \"before all\" hook in \"API Automation Test\"",
+              "timedOut": false,
+              "duration": 318,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await fetch(\n  \"https://belajar-bareng.onrender.com/api/login\",\n  {\n    method: \"POST\",\n    headers: { \"Content-Type\": \"application/json\" },\n    body: JSON.stringify({\n      username: \"admin\",\n      password: \"admin\"\n    })\n  }\n);\nconst body = await response.json();\nexpect(response.status).to.equal(200);\nexpect(body).to.have.property(\"token\");\n// console.log(\"Login Response:\", body);\ntoken = body.token;",
+              "err": {},
+              "uuid": "a271c362-1567-4441-aaac-55bb4a1c05c8",
+              "parentUUID": "990e2c33-beac-4b7a-818e-f07a74ac4298",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Positive Case - valid credential",
+              "fullTitle": "API Automation Test Positive Case - valid credential",
+              "timedOut": false,
+              "duration": 0,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "expect(token).to.be.a(\"string\");",
+              "err": {},
+              "uuid": "d3cf62ed-1eb1-4353-b31a-4fa3f1501716",
+              "parentUUID": "990e2c33-beac-4b7a-818e-f07a74ac4298",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Negative Case - invalid credential (sesitive case)",
+              "fullTitle": "API Automation Test Negative Case - invalid credential (sesitive case)",
+              "timedOut": false,
+              "duration": 210,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await fetch(\n  \"https://belajar-bareng.onrender.com/api/login\",\n  {\n    method: \"POST\",\n    headers: { \"Content-Type\": \"application/json\" },\n    body: JSON.stringify({\n      username: \"ADMIN\",\n      password: \"admin\"\n    })\n  }\n);\nconst body = await response.json();\nexpect(response.status).to.equal(401);\nexpect(body).to.have.property(\"message\");",
+              "err": {},
+              "uuid": "ccc817ab-6517-4790-b984-4cd4d9dcdf30",
+              "parentUUID": "990e2c33-beac-4b7a-818e-f07a74ac4298",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Positive Case - get users list",
+              "fullTitle": "API Automation Test Positive Case - get users list",
+              "timedOut": false,
+              "duration": 556,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const response = await fetch(\n      \"https://belajar-bareng.onrender.com/api/users\",\n      {\n        method: \"GET\",\n        headers: {\n          \"Content-Type\": \"application/json\",\n          \"Authorization\": `Bearer ${token}`\n        }\n      }\n    );\n    const body = await response.json();\n    // console.log(\"Get Users Response:\", body);\n    expect(response.status).to.equal(200);\n    expect(body).to.have.property(\"users\");\n    expect(body.users).to.be.an(\"array\");",
+              "err": {},
+              "uuid": "405b0f23-d413-4f2c-8db7-d61a970d0445",
+              "parentUUID": "990e2c33-beac-4b7a-818e-f07a74ac4298",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d3cf62ed-1eb1-4353-b31a-4fa3f1501716",
+            "ccc817ab-6517-4790-b984-4cd4d9dcdf30",
+            "405b0f23-d413-4f2c-8db7-d61a970d0445"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 766,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.5"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.3.2"
+    }
+  }
+}
